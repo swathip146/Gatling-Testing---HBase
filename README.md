@@ -1,12 +1,12 @@
-# Gatling-Testing---HBase
+# Gatling-Testing for REST (Profile Services)
 
 ## Execution
 
 From your project home directory run:
 
-`mvn test`
+`mvn test -Dworkload=<workload config filepath>`
 
-## Config File
+## Workload Config File
 
 We can input a **JSON file** which will contain the list of URLs gatling's simulation will execute.
 Each JSON object can take the following parameters:
@@ -50,10 +50,17 @@ The format of a feeder is as below:
   }
 ]
 ```
+If the base URL is : `http://localhost:8080/1111_adobe_com/somerowkey`
+
+The feed method will generate the following URLs from the feeder file.
+
+`http://localhost:8080/1111_adobe_com:adobecom/somerowkey?timestamp=1500598138304&?value=email
+ http://localhost:8080/1111_adobe_com:adobecom/somerowkey?timestamp=1500598138304&?value=web`
+ 
 ## Environment
 
-To specify the file path to the config file or to specify run duration and other parameters modify /src/test/scala/main/Utils/**Environment.scala** file
+To specify the run duration and other parameters modify /src/test/scala/main/Utils/**Environment.scala** file
 
-To specify various other injection load parameters in Simulation, see [Simulation setup](http://gatling.io/docs/current/general/simulation_setup/)
+To specify various other injection load parameters in a Simulation, see [Simulation setup](http://gatling.io/docs/current/general/simulation_setup/)
 
 To specify any header information required for the API service, edit  /src/test/scala/main/Utils/**Headers.scala** file

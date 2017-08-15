@@ -4,4 +4,4 @@ To execute:
 
 From your project home directory run:
 
-mvn test
+`mvn test`
